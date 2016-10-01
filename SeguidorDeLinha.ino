@@ -82,19 +82,13 @@ int s0r, s1r, s2r, s3r;
 void loop(){
 
   s0 = analogRead(A0);
-  delay(5);
+  // delay(5);
   s1 = analogRead(A1);
-  delay(5);
+  // delay(5);
   s2 = analogRead(A2);
-  delay(5);
+  // delay(5);
   s3 = analogRead(A3);
-  delay(5);
-
-
-// #define S0T 720
-// #define S1T 800
-// #define S2T 930
-// #define S3T 940
+  // delay(5);
 
 if (s0 > S0T){
   s0r = 1;
@@ -120,7 +114,7 @@ if (s3 > S3T){
   s3r = 0;
 }
 
-if (s1r == 1 && s2r == 1){
+if ((s1r == 1 && s2r == 1) || (s1r == 0 && s2r == 0)){
   forward();
 } else if (s1r == 0 && s2r == 1){
   right();
