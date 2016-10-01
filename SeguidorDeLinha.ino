@@ -53,8 +53,6 @@ void left(){
   analogWrite(R1, 80);
 }
 
-
-
 void setup(){
 
   Serial.begin(9600);
@@ -63,16 +61,10 @@ void setup(){
   pinMode(L1, OUTPUT);
   pinMode(R0, OUTPUT);
   pinMode(R1, OUTPUT);
-  
-  // analogWrite(L0, LOW);
-  // analogWrite(L1, LOW);
-  // analogWrite(R0, LOW);
-  // analogWrite(R1, LOW);
+
   allOff();
 
 }
-
-
 
 
 int s0, s1, s2, s3;
@@ -82,13 +74,9 @@ int s0r, s1r, s2r, s3r;
 void loop(){
 
   s0 = analogRead(A0);
-  // delay(5);
   s1 = analogRead(A1);
-  // delay(5);
   s2 = analogRead(A2);
-  // delay(5);
   s3 = analogRead(A3);
-  // delay(5);
 
 if (s0 > S0T){
   s0r = 1;
