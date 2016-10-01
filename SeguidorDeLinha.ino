@@ -11,24 +11,28 @@
 #define S2T 900
 #define S3T 910
 
+#define NORMAL_SPEED 80
+#define STOP_SPEED 0
+#define FF_SPEED 110
+
 int s0, s1, s2, s3;
 int s0r, s1r, s2r, s3r;
 int value;
 
 void allOff(){
-  analogWrite(L0, 0);
-  analogWrite(L1, 0);
-  analogWrite(R0, 0);
-  analogWrite(R1, 0);
+  analogWrite(L0, STOP_SPEED);
+  analogWrite(L1, STOP_SPEED);
+  analogWrite(R0, STOP_SPEED);
+  analogWrite(R1, STOP_SPEED);
 }
 
 void forward(){
   allOff();
   #ifndef DEBUG
-  analogWrite(L0, 80);
-  analogWrite(L1, 0);
-  analogWrite(R0, 0);
-  analogWrite(R1, 80);
+  analogWrite(L0, FF_SPEED);
+  analogWrite(L1, STOP_SPEED);
+  analogWrite(R0, STOP_SPEED);
+  analogWrite(R1, FF_SPEED);
   #else
   Serial.println("F");
   #endif
@@ -38,10 +42,10 @@ void forward(){
 void backwards(){
   allOff();
   #ifndef DEBUG
-  analogWrite(L0, 0);
-  analogWrite(L1, 80);
-  analogWrite(R0, 80);
-  analogWrite(R1, 0);
+  analogWrite(L0, STOP_SPEED);
+  analogWrite(L1, NORMAL_SPEED);
+  analogWrite(R0, NORMAL_SPEED);
+  analogWrite(R1, STOP_SPEED);
   #else
   Serial.println("B");
   #endif
@@ -51,10 +55,10 @@ void backwards(){
 void right(){
   allOff();
   #ifndef DEBUG
-  analogWrite(L0, 80);
-  analogWrite(L1, 0);
-  analogWrite(R0, 80);
-  analogWrite(R1, 0);
+  analogWrite(L0, NORMAL_SPEED);
+  analogWrite(L1, STOP_SPEED);
+  analogWrite(R0, NORMAL_SPEED);
+  analogWrite(R1, STOP_SPEED);
   #else
   Serial.println("R");
   #endif
@@ -63,10 +67,10 @@ void right(){
 void left(){
   allOff();
   #ifndef DEBUG
-  analogWrite(L0, 0);
-  analogWrite(L1, 80);
-  analogWrite(R0, 0);
-  analogWrite(R1, 80);
+  analogWrite(L0, STOP_SPEED);
+  analogWrite(L1, NORMAL_SPEED);
+  analogWrite(R0, STOP_SPEED);
+  analogWrite(R1, NORMAL_SPEED);
   #else
   Serial.println("L");
   #endif
