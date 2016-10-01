@@ -11,6 +11,9 @@
 #define S2T 900
 #define S3T 910
 
+int s0, s1, s2, s3;
+int s0r, s1r, s2r, s3r;
+int value;
 
 void allOff(){
   analogWrite(L0, 0);
@@ -80,14 +83,20 @@ void setup(){
 
   allOff();
 
+  #ifndef DEBUG
+  pinMode(13, OUTPUT);
+  digitalWrite(13, HIGH);
+  for(int i=0; i < 5; i++){
+    delay(500);
+    digitalWrite(13, LOW);
+    delay(500);
+    digitalWrite(13, HIGH);
+  }
+  digitalWrite(13, LOW);
+  #endif
+
 }
 
-
-int s0, s1, s2, s3;
-
-int s0r, s1r, s2r, s3r;
-
-int value;
 
 void loop(){
 
