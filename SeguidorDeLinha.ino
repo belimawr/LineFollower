@@ -1,56 +1,56 @@
 
 
-#define L0 31
-#define L1 33
-#define R0 35
-#define R1 37
+#define L0 8
+#define L1 9
+#define R0 10
+#define R1 11
 
 
-#define S0T 720
-#define S1T 800
-#define S2T 930
-#define S3T 940
+#define S0T 790
+#define S1T 900
+#define S2T 900
+#define S3T 910
 
 
 void allOff(){
-  digitalWrite(L0, LOW);
-  digitalWrite(L1, LOW);
-  digitalWrite(R0, LOW);
-  digitalWrite(R1, LOW);
+  analogWrite(L0, 0);
+  analogWrite(L1, 0);
+  analogWrite(R0, 0);
+  analogWrite(R1, 0);
 }
 
 void forward(){
   allOff();
-  digitalWrite(L0, HIGH);
-  digitalWrite(L1, LOW);
-  digitalWrite(R0, LOW);
-  digitalWrite(R1, HIGH);
+  analogWrite(L0, 80);
+  analogWrite(L1, 0);
+  analogWrite(R0, 0);
+  analogWrite(R1, 80);
 }
 
 
 void backwards(){
   allOff();
-  digitalWrite(L0, LOW);
-  digitalWrite(L1, HIGH);
-  digitalWrite(R0, HIGH);
-  digitalWrite(R1, LOW);
+  analogWrite(L0, 0);
+  analogWrite(L1, 80);
+  analogWrite(R0, 80);
+  analogWrite(R1, 0);
 }
 
 
 void right(){
   allOff();
-  digitalWrite(L0, HIGH);
-  digitalWrite(L1, LOW);
-  digitalWrite(R0, HIGH);
-  digitalWrite(R1, LOW);
+  analogWrite(L0, 80);
+  analogWrite(L1, 0);
+  analogWrite(R0, 80);
+  analogWrite(R1, 0);
 }
 
 void left(){
   allOff();
-  digitalWrite(L0, LOW);
-  digitalWrite(L1, HIGH);
-  digitalWrite(R0, LOW);
-  digitalWrite(R1, HIGH);
+  analogWrite(L0, 0);
+  analogWrite(L1, 80);
+  analogWrite(R0, 0);
+  analogWrite(R1, 80);
 }
 
 
@@ -64,10 +64,10 @@ void setup(){
   pinMode(R0, OUTPUT);
   pinMode(R1, OUTPUT);
   
-  digitalWrite(L0, LOW);
-  digitalWrite(L1, LOW);
-  digitalWrite(R0, LOW);
-  digitalWrite(R1, LOW);
+  // analogWrite(L0, LOW);
+  // analogWrite(L1, LOW);
+  // analogWrite(R0, LOW);
+  // analogWrite(R1, LOW);
   allOff();
 
 }
