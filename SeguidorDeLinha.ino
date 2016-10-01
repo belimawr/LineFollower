@@ -1,4 +1,4 @@
-// #define DEBUG
+//#define DEBUG
 
 #define L0 8
 #define L1 9
@@ -11,9 +11,9 @@
 #define S2T 900
 #define S3T 910
 
-#define NORMAL_SPEED 80
+#define NORMAL_SPEED 75
 #define STOP_SPEED 0
-#define FF_SPEED 110
+#define FF_SPEED 100
 
 int s0, s1, s2, s3;
 int s0r, s1r, s2r, s3r;
