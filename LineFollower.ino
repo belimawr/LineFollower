@@ -1,15 +1,22 @@
-//#define DEBUG
-
-#define L0 8
-#define L1 9
-#define R0 10
-#define R1 11
+#define DEBUG
 
 
-#define S0T 750
-#define S1T 900
-#define S2T 900
-#define S3T 910
+//Green - LEFT
+//Brown - RIGHT
+
+#define MLEFT_PWM 6
+#define MLEFT_DIR 8
+
+#define MRIGHT_PWM 5
+#define MRIGHT_DIR 7
+
+#define FORWARD HIGH
+#define BACKWARD LOW
+
+#define S0T 795
+#define S1T 810
+#define S2T 895
+#define S3T 750
 
 #define NORMAL_SPEED 75
 #define STOP_SPEED 0
@@ -20,19 +27,21 @@ int s0r, s1r, s2r, s3r;
 int value;
 
 void allOff(){
-  analogWrite(L0, STOP_SPEED);
-  analogWrite(L1, STOP_SPEED);
-  analogWrite(R0, STOP_SPEED);
-  analogWrite(R1, STOP_SPEED);
+  digitalWrite(MLEFT_DIR, FORWARD);
+  digitalWrite(MRIGHT_DIR, FORWARD);
+  
+  analogWrite(MLEFT_PWM, STOP_SPEED);
+  analogWrite(MRIGHT_PWM, STOP_SPEED);
 }
 
 void forward(){
   allOff();
   #ifndef DEBUG
-  analogWrite(L0, FF_SPEED);
-  analogWrite(L1, STOP_SPEED);
-  analogWrite(R0, STOP_SPEED);
-  analogWrite(R1, FF_SPEED);
+  digitalWrite(MLEFT_DIR, FORWARD);
+  digitalWrite(MRIGHT_DIR, FORWARD);
+	
+  analogWrite(MLEFT_PWM, FF_SPEED);
+  analogWrite(MRIGHT_PWM, FF_SPEED);
   #else
   Serial.println("F");
   #endif
@@ -42,10 +51,11 @@ void forward(){
 void backwards(){
   allOff();
   #ifndef DEBUG
-  analogWrite(L0, STOP_SPEED);
-  analogWrite(L1, NORMAL_SPEED);
-  analogWrite(R0, NORMAL_SPEED);
-  analogWrite(R1, STOP_SPEED);
+  digitalWrite(MLEFT_DIR, BACKWARD);
+  digitalWrite(MRIGHT_DIR, BACKWARD);
+	
+  analogWrite(MLEFT_PWM, NORMAL_SPEED);
+  analogWrite(MRIGHT_PWM, NORMAL_SPEED);
   #else
   Serial.println("B");
   #endif
@@ -55,10 +65,11 @@ void backwards(){
 void right(){
   allOff();
   #ifndef DEBUG
-  analogWrite(L0, NORMAL_SPEED);
-  analogWrite(L1, STOP_SPEED);
-  analogWrite(R0, NORMAL_SPEED);
-  analogWrite(R1, STOP_SPEED);
+  digitalWrite(MLEFT_DIR, FORWARD);
+  digitalWrite(MRIGHT_DIR, BACKWARD);
+	
+  analogWrite(MLEFT_PWM, NORMAL_SPEED);
+  analogWrite(MRIGHT_PWM, NORMAL_SPEED);
   #else
   Serial.println("R");
   #endif
@@ -67,10 +78,11 @@ void right(){
 void left(){
   allOff();
   #ifndef DEBUG
-  analogWrite(L0, STOP_SPEED);
-  analogWrite(L1, NORMAL_SPEED);
-  analogWrite(R0, STOP_SPEED);
-  analogWrite(R1, NORMAL_SPEED);
+  digitalWrite(MLEFT_DIR, BACKWARD);
+  digitalWrite(MRIGHT_DIR, FORWARD);
+	
+  analogWrite(MLEFT_PWM, NORMAL_SPEED);
+  analogWrite(MRIGHT_PWM, NORMAL_SPEED);
   #else
   Serial.println("L");
   #endif
@@ -80,10 +92,10 @@ void setup(){
 
   Serial.begin(9600);
   
-  pinMode(L0, OUTPUT);
-  pinMode(L1, OUTPUT);
-  pinMode(R0, OUTPUT);
-  pinMode(R1, OUTPUT);
+  pinMode(MRIGHT_PWM, OUTPUT);
+  pinMode(MRIGHT_DIR, OUTPUT);
+  pinMode(MLEFT_PWM, OUTPUT);
+  pinMode(MLEFT_DIR, OUTPUT);
 
   allOff();
 
