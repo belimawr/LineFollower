@@ -1,0 +1,17 @@
+cube(size = [59,90,5], center = true);
+
+translate([0, (56/2) - 5, 7]){
+    cube(size = [10,10,25], center = true);
+}
+
+translate([0, -((56/2) - 5), 7]){
+    cube(size = [10,10,25], center = true);
+}
+
+translate([0, -((56/2) +8), 7]){
+    cube(size = [30,10,11], center = true);
+}
+
+translate([0, ((56/2) +8), 7]){
+    cube(size = [30,10,11], center = true);
+}
